@@ -41,6 +41,9 @@ function App() {
           />
         ))}
       </div>
+      { tasks.length > 0 ? <p className='clear-tasks' onClick={() => 
+        setTasks([])
+      }>Clear all tasks</p> : <></>}
     </>
   );
 }
