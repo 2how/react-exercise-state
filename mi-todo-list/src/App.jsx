@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback} from 'react';
 import './App.css';
 import Task from '../components/Task';
 
@@ -10,16 +10,6 @@ function App() {
       setTasks([...tasks, { id: Date.now(), text: event.target.value, completed: false }]);
       event.target.value = '';
     }
-  };
-
-  const removeTask = (id) => {
-    setTasks(tasks.filter(task => task.id !== id));
-  };
-
-  const switchCompleted = (id) => {
-    setTasks(tasks.map(task => 
-      task.id === id ? { ...task, completed: !task.completed } : task
-    ));
   };
 
   return (
@@ -36,8 +26,8 @@ function App() {
           <Task
             key={task.id}
             task={task}
-            onDiscard={() => removeTask(task.id)}
-            onSwitchCompleted={() => switchCompleted(task.id)}
+            taskId={task.id}
+            setTasks={setTasks}
           />
         ))}
       </div>
