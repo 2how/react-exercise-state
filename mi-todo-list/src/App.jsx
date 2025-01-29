@@ -26,7 +26,6 @@ function App() {
           <Task
             key={task.id}
             task={task}
-            taskId={task.id}
             setTasks={setTasks}
           />
         ))}
